@@ -10,11 +10,13 @@ using System.Windows.Forms;
 
 namespace SWC_Visualization_App
 {
-    public partial class Form1 : Form
+    public partial class VisualizationForm : Form
     {
-        public Form1()
+        public VisualizationForm()
         {
             InitializeComponent();
+
+            MessageBox.Show("Hello World!");
         }
     }
 }

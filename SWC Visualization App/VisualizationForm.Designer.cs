@@ -1,6 +1,6 @@
 ﻿namespace SWC_Visualization_App
 {
-    partial class Form1
+    partial class VisualizationForm
     {
         /// <summary>
         /// Required designer variable.
