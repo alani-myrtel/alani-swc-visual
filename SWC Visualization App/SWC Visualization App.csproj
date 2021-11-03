@@ -49,7 +49,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="SWC.cs" />
     <Compile Include="VisualizationForm.cs">
       <SubType>Form</SubType>
     </Compile>
