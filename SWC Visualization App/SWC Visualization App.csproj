@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SWC.cs" />
     <Compile Include="VisualizationForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -66,6 +67,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="VisualizationForm.resx">
+      <DependentUpon>VisualizationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Authentication\.secret" />
+    <None Include="Authentication\.clientid" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -78,6 +84,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="Authentication\.redirurl" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
