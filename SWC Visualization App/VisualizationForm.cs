@@ -40,13 +40,11 @@ namespace SWC_Visualization_App
         /// </summary>
         private void GetClientInformation()
         {
-            string[] output = { _clientId, _clientSecret, _redirectUrl };
-            string[] inputFileNames = { ".clientid", ".secret", ".redirurl" };
             string path = @"..\..\Authentication\";
 
-            _clientId = File.ReadAllText(path + inputFileNames[0]);
-            _clientSecret = File.ReadAllText(path + inputFileNames[1]);
-            _redirectUrl = File.ReadAllText(path + inputFileNames[2]);
+            _clientId = File.ReadAllText(path + ".clientid");
+            _clientSecret = File.ReadAllText(path + ".secret");
+            _redirectUrl = File.ReadAllText(path + ".redirurl");
         }
 
         /// <summary>
