@@ -52,6 +52,7 @@ namespace SWC_Visualization_App
             this.btnGetAuth.TabIndex = 1;
             this.btnGetAuth.Text = "Get Auth";
             this.btnGetAuth.UseVisualStyleBackColor = true;
+            this.btnGetAuth.Click += new System.EventHandler(this.Button_Auth_OnButtonClick);
             // 
             // btnHelloWorld
             // 

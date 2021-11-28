@@ -5,8 +5,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SWC_Visualization_App
-{
-    internal static class Program
+{    internal static class Program
     {
         /// <summary>
         /// The main entry point for the application.
