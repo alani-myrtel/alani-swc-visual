@@ -1,20 +1,15 @@
-﻿
-using Microsoft.Web.WebView2.Core;
-using Microsoft.Web.WebView2.WinForms;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Net.Http;
-using System.Net.Security;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
 using System.Windows.Forms;
+using System.Xml;
+using System.Xml.Linq;
 
 namespace SWC_Visualization_App
 {
@@ -33,8 +28,8 @@ namespace SWC_Visualization_App
         private string[] _scopes =
         {
             "character_read",               /* Read basic character information */
-            //"personal_inv_overview",        /* Read basic information about your inventories */
-            //"faction_inv_overview",         /* Read basic information about your faction's inventories */
+            "personal_inv_overview",        /* Read basic information about your inventories */
+            "faction_inv_overview",         /* Read basic information about your faction's inventories */
         };
         private Form _webBrowserForm;
 
@@ -78,7 +73,6 @@ namespace SWC_Visualization_App
         private async Task<int> CheckAccess()
         {
             string url = @"https://www.swcombine.com/ws/v2.0/api/helloauth/?access_token=" + _accessToken;
-            //string url = @"https://www.swcombine.com/ws/v2.0/api/helloworld";
             int status = -1;
 
             try
@@ -176,6 +170,7 @@ namespace SWC_Visualization_App
             };
 
             FormUrlEncodedContent data = new(values);
+            
 
             try
             {
@@ -183,6 +178,9 @@ namespace SWC_Visualization_App
                 status = (int)response.StatusCode;
                 response.EnsureSuccessStatusCode();
                 string responseBody = await response.Content.ReadAsStringAsync();
+
+                _accessToken = XDocument.Parse(responseBody).Descendants("access_token").Select(e => e.Value).SingleOrDefault();
+                _isAuthenticated = true;
 
                 MessageBox.Show(responseBody);
 
