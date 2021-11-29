@@ -8,7 +8,6 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web;
 using System.Windows.Forms;
-using System.Xml;
 using System.Xml.Linq;
 
 namespace SWC_Visualization_App
@@ -24,12 +23,13 @@ namespace SWC_Visualization_App
         private string _accessToken = "Not initialized";
 
         private readonly string _baseUrl = @"https://www.swcombine.com/ws/v2.0/api/";
-        private readonly string _separator = Uri.EscapeDataString(",");
+        private readonly string _separator = Uri.EscapeDataString(" ");
         private string[] _scopes =
         {
             "character_read",               /* Read basic character information */
             "personal_inv_overview",        /* Read basic information about your inventories */
-            "faction_inv_overview",         /* Read basic information about your faction's inventories */
+            //"faction_inv_overview",         /* Read basic information about your faction's inventories */
+            //"character_write"
         };
         private Form _webBrowserForm;
 
@@ -96,7 +96,7 @@ namespace SWC_Visualization_App
 
         private void Authorize()
         {
-            string url = string.Format("{0}?scope={1}&redirect_url={2}&response_type=code&client_id={3}",
+            string url = string.Format("{0}?scope={1}&redirect_uri={2}&response_type=code&client_id={3}",
                 @"https://www.swcombine.com/ws/oauth2/auth/",
                 string.Join(_separator, _scopes),
                 _redirectUri,
